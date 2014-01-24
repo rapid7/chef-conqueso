@@ -1,3 +1,9 @@
 site :opscode
 
+cookbook 'mysql', '4.0.20'
+cookbook 'nodejs', '1.3.0'
+cookbook 'apt', '2.3.4'
+cookbook 'build-essential', '1.4.2'
+cookbook 'openssl', '1.1.0'
+cookbook 'yum', '3.0.4'
 metadata
