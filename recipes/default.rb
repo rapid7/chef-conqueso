@@ -1,17 +1,9 @@
-#
-# Cookbook Name:: conqueso-chef
-# Recipe:: default
-#
-# Copyright 2014, Rapid7, LLC.
-#
-# All rights reserved - Do Not Redistribute
-#
 include_recipe "nodejs::install_from_binary"
 include_recipe "nodejs::npm"
-if node['install']['mysqlserver']
+if node['conqueso']['install']['mysqlserver']
    include_recipe "mysql::server"
 end
-if node['install']['mysqlclient']
+if node['conqueso']['install']['mysqlclient']
    include_recipe "mysql::client"
 end
 
@@ -24,18 +16,23 @@ artifactdlfile = artifactdldir + artifactname
 baseurl = "https://github.com/rapid7/conqueso/releases/download/"
 url = baseurl+"#{node['conqueso']['version']}/"+artifactname
 
-package "unzip" do
-  action :install
+user "conqueso" do
+  comment "conqueso system user"
+  system true
+  shell "/bin/false"
 end
+
+package "unzip" 
 
 remote_file artifactdlfile do
   source url
+  checksum node['conqueso']['sha256sum']
   mode 00644
 end
 
 directory "/srv/#{artifactdir}" do
-  owner "root"
-  group "root"
+  owner "conqueso"
+  group "conqueso"
   mode 00755
   action :create
 end
@@ -45,17 +42,12 @@ execute "unzip" do
   cwd installation_dir
   command "unzip -o #{artifactdlfile}"
   action :run
-  not_if "test -d /srv/#{artifactdir}/server"
+  not_if { Dir.exists?("/srv/#{artifactdir}/server") }
 end
 
 template "/srv/#{artifactdir}/server/config/settings.json" do
   local true
   source "/srv/#{artifactdir}/templates/settings.json.erb"
-end
-
-link "/srv/conqueso" do
-  action :delete
-  only_if "test -L /srv/conqueso"
 end
 
 link "/srv/conqueso" do
