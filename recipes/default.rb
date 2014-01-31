@@ -30,10 +30,11 @@ remote_file artifactdlfile do
   mode 00644
 end
 
-directory "/srv/#{artifactdir}" do
+directory "/srv/#{artifactdir}/logs" do
   owner "conqueso"
   group "conqueso"
   mode 00755
+  recursive true
   action :create
 end
 
@@ -45,11 +46,44 @@ execute "unzip" do
   not_if { Dir.exists?("/srv/#{artifactdir}/server") }
 end
 
+#Wasn't quite sure how to make sure that this directory and all its children 
+#are owned by conqueso so the log can be written.
+execute "set /srv/#{artifactdir} owner" do
+  command "chown -Rf conqueso:conqueso /srv/#{artifactdir}"
+  only_if { Etc.getpwuid(File.stat("/srv/#{artifactdir}").uid).name != "conqueso" }
+end
+
 template "/srv/#{artifactdir}/server/config/settings.json" do
-  local true
   source "/srv/#{artifactdir}/templates/settings.json.erb"
+  local true
+  owner "conqueso"
+  group "conqueso"
 end
 
 link "/srv/conqueso" do
   to "/srv/#{artifactdir}"
+  owner "conqueso"
+  group "conqueso"
 end
+
+cookbook_file "/etc/init.d/conqueso" do
+  source "conqueso-init.sh"
+  mode 00755
+end
+
+#The goal of this next part is to only start up the service IF we've been asked to.
+#The reasoning is if you're running chef-solo as part of an ami baking process, say 
+#packer or something, you just want the service dumped out, but not started.  By 
+#default, the service will start up to speed up dev work on this cookbook.
+Chef::Log.info("The desired start mode is #{node['conqueso']['start']}.")
+if node['conqueso']['start']
+  service "conqueso" do
+    action [:enable, :start]
+  end
+else
+  service "conqueso" do
+    action :enable 
+  end
+end
+
+

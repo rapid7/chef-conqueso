@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 ### BEGIN INIT INFO
 # Provides: node_debian_init
 # Required-Start: $remote_fs $named $syslog
@@ -18,7 +18,7 @@ DESC="Conqueso config server"
  
 NODEUSER=conqueso:conqueso
  
-LOCAL_VAR_RUN=/usr/local/var/run
+LOCAL_VAR_RUN=/var/run
  
 NAME=node 
 DAEMON=/usr/local/bin/$NAME
