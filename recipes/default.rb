@@ -6,6 +6,18 @@ end
 if node['conqueso']['install']['mysqlclient']
    include_recipe "mysql::client"
 end
+#Don't judge
+Chef::Log.info("______ CONQUESO ______")
+Chef::Log.info("|     ___ _____      |")
+Chef::Log.info("|    /\\ (_)    \\     |")
+Chef::Log.info("|   /  \\      (_,    | ")
+Chef::Log.info("|  _)  _\\   _    \\   |  ")
+Chef::Log.info("| /   (_)\\_( )____\\  |  ")
+Chef::Log.info("| \\_     /    _  _/  | ")
+Chef::Log.info("|   ) /\\/  _ (o)(    | ")
+Chef::Log.info("|   \\ \\_) (o)   /    |  ")
+Chef::Log.info("|    \\/________/     | ")
+Chef::Log.info("|____________________|")
 
 
 version = node['conqueso']['version']
@@ -50,7 +62,7 @@ end
 #are owned by conqueso so the log can be written.
 execute "set /srv/#{artifactdir} owner" do
   command "chown -Rf conqueso:conqueso /srv/#{artifactdir}"
-  only_if { Etc.getpwuid(File.stat("/srv/#{artifactdir}").uid).name != "conqueso" }
+  only_if { Etc.getpwuid(File.stat("/srv/#{artifactdir}").uid).name != "conqueso" || Etc.getpwuid(File.stat("/srv/#{artifactdir}").gid).name != "conqueso" }
 end
 
 template "/srv/#{artifactdir}/server/config/settings.json" do
