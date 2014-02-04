@@ -1,3 +1,5 @@
+include_recipe 'apt'
+
 if node['conqueso']['install']['mysqlserver']
    include_recipe "mysql::server"
 end
@@ -26,9 +28,13 @@ artifactdlfile = artifactdldir + artifactname
 baseurl = "https://github.com/rapid7/conqueso/releases/download/"
 url = baseurl+"#{node['conqueso']['version']}/"+artifactname
 
-apt_repository 'nodejs' do
-  uri        'http://ppa.launchpad.net/chris-lea/node.js/ubuntu'
+apt_repository 'node.js' do
+  uri 'http://ppa.launchpad.net/chris-lea/node.js/ubuntu'
+  distribution 'precise'
   components ['main']
+  keyserver "keyserver.ubuntu.com"
+  key "C7917B12"
+  action :add
 end
 
 user "conqueso" do
@@ -37,7 +43,13 @@ user "conqueso" do
   shell "/bin/false"
 end
 
-package "unzip, nodejs" 
+package "unzip" 
+
+#specific version of node
+package "nodejs" do
+  version "0.10.25-1chl1~precise1" #these versions tend to disappear frequently...
+  action :install
+end
 
 remote_file artifactdlfile do
   source url
