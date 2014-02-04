@@ -1,5 +1,3 @@
-include_recipe "nodejs::install_from_binary"
-include_recipe "nodejs::npm"
 if node['conqueso']['install']['mysqlserver']
    include_recipe "mysql::server"
 end
@@ -28,13 +26,18 @@ artifactdlfile = artifactdldir + artifactname
 baseurl = "https://github.com/rapid7/conqueso/releases/download/"
 url = baseurl+"#{node['conqueso']['version']}/"+artifactname
 
+apt_repository 'nodejs' do
+  uri        'http://ppa.launchpad.net/chris-lea/node.js/ubuntu'
+  components ['main']
+end
+
 user "conqueso" do
   comment "conqueso system user"
   system true
   shell "/bin/false"
 end
 
-package "unzip" 
+package "unzip, nodejs" 
 
 remote_file artifactdlfile do
   source url
