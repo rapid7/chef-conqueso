@@ -21,7 +21,7 @@ NODEUSER=conqueso:conqueso
 LOCAL_VAR_RUN=/var/run
  
 NAME=node 
-DAEMON=/usr/local/bin/$NAME
+DAEMON=/usr/bin/$NAME
  
 [ $UID -eq "0" ] && LOCAL_VAR_RUN=/var/run
 THIS_ARG=$0
