@@ -73,6 +73,10 @@ execute "unzip" do
   not_if { Dir.exists?("/srv/#{artifactdir}/server") }
 end
 
+file "/srv/#{artifactdir}/node_modules/sequelize/bin/sequelize" do
+  mode 00755
+end
+
 #Wasn't quite sure how to make sure that this directory and all its children 
 #are owned by conqueso so the log can be written.
 execute "set /srv/#{artifactdir} owner" do

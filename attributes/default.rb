@@ -1,4 +1,4 @@
-default['conqueso']['sha256sum'] = 'd09ea021200602b900032b9875dae20478adc96249bfaa49b0516c077cc40f42'
+default['conqueso']['sha256sum'] = '90198c6b266f8fe4df724d0684cd8b9d67619e757c5e150bb67ac1a4c5980776'
 default['conqueso']['version'] = '0.3.0'
 default['conqueso']['http']['port'] = 8080
 #The type is case sensitive!
