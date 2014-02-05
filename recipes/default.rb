@@ -105,6 +105,7 @@ end
 Chef::Log.info("The desired start mode is #{node['conqueso']['start']}.")
 if node['conqueso']['start']
   service "conqueso" do
+    status_command "service conqueso status"
     action [:enable, :start]
   end
 else
