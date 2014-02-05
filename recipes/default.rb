@@ -43,7 +43,11 @@ user "conqueso" do
   shell "/bin/false"
 end
 
-package "unzip", "vim" 
+%w{unzip vim}.each do |pkg|
+  package pkg do
+    action :install
+  end
+end
 
 #specific version of node
 package "nodejs" do
