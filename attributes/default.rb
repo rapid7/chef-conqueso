@@ -1,5 +1,5 @@
-default['conqueso']['sha256sum'] = 'a0f9f2b49742a38a163f74960e7311c3201853d0f3068b51154777c7f46953f4'
-default['conqueso']['version'] = '0.1.0-BETA'
+default['conqueso']['sha256sum'] = 'd09ea021200602b900032b9875dae20478adc96249bfaa49b0516c077cc40f42'
+default['conqueso']['version'] = '0.3.0'
 default['conqueso']['http']['port'] = 8080
 #The type is case sensitive!
 default['conqueso']['db']['type'] = 'MYSQL'
