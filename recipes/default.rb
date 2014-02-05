@@ -43,7 +43,7 @@ user "conqueso" do
   shell "/bin/false"
 end
 
-package "unzip" 
+package "unzip", "vim" 
 
 #specific version of node
 package "nodejs" do

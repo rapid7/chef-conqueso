@@ -46,9 +46,10 @@ SCRIPTNAME=/etc/init.d/$INIT_SCRIPT_NAME
  
 do_start()
 {
-    start-stop-daemon --start --quiet --pidfile $PIDFILE --chuid $NODEUSER --background --exec $DAEMON --test > /dev/null \
+    cd /srv/conqueso
+    start-stop-daemon -d /srv/conqueso --start --quiet --pidfile $PIDFILE --chuid $NODEUSER --background --exec $DAEMON --test > /dev/null \
        || { [ "$VERBOSE" != no ] && log_daemon_msg " ---> Daemon already running $DESC" "$INIT_SCRIPT_NAME_NOEXT"; return 1; }
-    start-stop-daemon --start --quiet --chuid $NODEUSER --make-pidfile --pidfile $PIDFILE --background --exec $DAEMON -- \
+    start-stop-daemon -d /srv/conqueso --start --quiet --chuid $NODEUSER --make-pidfile --pidfile $PIDFILE --background --exec $DAEMON -- \
        $DAEMON_ARGS \
         || { [ "$VERBOSE" != no ] && log_daemon_msg " ---> could not be start $DESC" "$INIT_SCRIPT_NAME_NOEXT"; return 2; }
       [ "$VERBOSE" != no ] && log_daemon_msg " ---> started $DESC" "$INIT_SCRIPT_NAME_NOEXT"
