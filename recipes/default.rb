@@ -68,7 +68,7 @@ end
 execute "unzip" do
   installation_dir = "/srv/#{artifactdir}"
   cwd installation_dir
-  command "unzip -o #{artifactdlfile}"
+  command "unzip -q -o #{artifactdlfile}"
   action :run
   not_if { Dir.exists?("/srv/#{artifactdir}/server") }
 end
