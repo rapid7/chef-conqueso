@@ -33,3 +33,16 @@ Attributes
 * `['conqueso']['install']['mysqlserver']` - Should we install the mysql server.
 * `['conqueso']['install']['mysqlclient']` - Should we install the mysql client.
 * `['conqueso']['start']` - Post installation, should conqueso be started.
+
+
+
+Getting Started
+-----------
+
+The first order of business is to install [Virtual Box](https://www.virtualbox.org/). 
+
+Once you have that up and running, the next thing you'll need is [Berkshelf](http://berkshelf.com/).
+
+Besure to follow the *vagrant-berkshelf* section on that page.
+
+Once you have all that set up, `git clone` this repo then you should be able to `vagrant up` within that directory and you'll have a running copy of the [Conqueso](https://github.com/rapid7/conqueso) service.
