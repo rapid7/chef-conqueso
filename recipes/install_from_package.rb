@@ -1,25 +1,6 @@
 require 'open-uri'
 include_recipe 'apt'
-
-if node['conqueso']['install']['mysqlserver']
-   include_recipe "mysql::server"
-end
-if node['conqueso']['install']['mysqlclient']
-   include_recipe "mysql::client"
-end
-#Don't judge
-Chef::Log.info("______ CONQUESO ______")
-Chef::Log.info("|     ___ _____      |")
-Chef::Log.info("|    /\\ (_)    \\     |")
-Chef::Log.info("|   /  \\      (_,    | ")
-Chef::Log.info("|  _)  _\\   _    \\   |  ")
-Chef::Log.info("| /   (_)\\_( )____\\  |  ")
-Chef::Log.info("| \\_     /    _  _/  | ")
-Chef::Log.info("|   ) /\\/  _ (o)(    | ")
-Chef::Log.info("|   \\ \\_) (o)   /    |  ")
-Chef::Log.info("|    \\/________/     | ")
-Chef::Log.info("|____________________|")
-
+Chef::Log.info("About to install from a prepared package....")
 
 version = node['conqueso']['version']
 artifactdir = "conqueso-#{version}"
@@ -29,40 +10,11 @@ artifactdlfile = artifactdldir + artifactname
 baseurl = "https://github.com/rapid7/conqueso/releases/download/"
 url = baseurl+"#{node['conqueso']['version']}/"+artifactname
 
-apt_repository 'node.js' do
-  uri 'http://ppa.launchpad.net/chris-lea/node.js/ubuntu'
-  distribution 'precise'
-  components ['main']
-  keyserver "keyserver.ubuntu.com"
-  key "C7917B12"
-  action :add
-end
-
-user "conqueso" do
-  comment "conqueso system user"
-  system true
-  shell "/bin/false"
-end
-
-%w{unzip vim}.each do |pkg|
-  package pkg do
-    action :install
-  end
-end
-
-#specific version of node
-package "nodejs" do
-  version "0.10.25-1chl1~precise1" #these versions tend to disappear frequently...
-  action :install
-end
-
 remote_file artifactdlfile do
   source url
-  #conqueso_sha256 = node['conqueso']['sha256sum'] || Net::HTTP.get('http://...')
+  #Doing this for chef10 because the embedded certs are out of date
   conqueso_sha256 = node['conqueso']['sha256sum'] || open('https://github.com/rapid7/conqueso/releases/download/0.3.1/sha256sum.txt', :ssl_ca_cert=>"/etc/ssl/certs/ca-certificates.crt").read
   checksum conqueso_sha256
- #if the attribute has NOT been set, then just grab it,
- # otherwise, just grab the contents of the file
   mode 00644
 end
 

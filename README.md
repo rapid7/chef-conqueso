@@ -3,11 +3,13 @@ conqueso-chef
 
 The chef cookbook for deploying conqueso.
 
-This cookbook has two options in mind for the end user:
+This cookbook has three options in mind for the end user:
 
 1 - Standalone developer of the cookbook
 
 2 - Someone who is preparing images (either AMIs or VMs etc) and has a remote database 
+
+3 - A developer of both the server and the cookbook (so someone who wants to grab the latest code from source control)
 
 
 Attributes

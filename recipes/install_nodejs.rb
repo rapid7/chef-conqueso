@@ -1,4 +1,3 @@
-require 'open-uri'
 include_recipe 'apt'
 
 apt_repository 'node.js' do

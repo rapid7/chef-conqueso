@@ -1,33 +1,34 @@
 include_recipe 'apt'
-puts "installing from github"
+Chef::Log.info("About to install from source....")
 
 artifactdir = "conqueso-latest"
 
-user "conqueso" do
-  comment "conqueso system user"
-  system true
-  shell "/bin/false"
-end
-
-%w{unzip vim git}.each do |pkg|
+%w{git}.each do |pkg|
   package pkg do
     action :install
   end
 end
 
-#specific version of node
-package "nodejs" do
-  version "0.10.25-1chl1~precise1" #these versions tend to disappear frequently...
-  action :install
-end
-
-###
-###   insert git clone into /srv/artifact dir here
-###
-
 git "/srv/conqueso-latest" do
   repository "https://github.com/rapid7/conqueso.git"
   reference "master"
+end
+
+execute "install grunt and bower" do
+  command "npm install -g grunt-cli bower"
+  cwd "/srv/#{artifactdir}"
+end
+
+execute "install dependencies" do
+  command "npm install"
+  cwd "/srv/#{artifactdir}"
+end
+
+#This is now keeying off the root user to make sure the 
+#--allow-root flag INSIDE the grunt script is used.
+execute "grunt" do
+  command "grunt"
+  cwd "/srv/#{artifactdir}"
 end
 
 directory "/srv/#{artifactdir}/logs" do
