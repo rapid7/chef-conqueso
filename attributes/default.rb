@@ -10,7 +10,9 @@ default['conqueso']['db']['databaseName'] = 'conqueso'
 default['conqueso']['db']['user'] = 'root'
 default['conqueso']['db']['password'] = 'root'
 default['conqueso']['db']['maxConnections'] = 15
+#Please note - maxIdleTime is in miliseconds
 default['conqueso']['db']['maxIdleTime'] = 5000
+#The pollintervalsecs value is in seconds
 default['conqueso']['pollintervalsecs'] = '15'
 default['conqueso']['logging']['dir'] = '/srv/conqueso/logs'
 default['conqueso']['logging']['file'] = 'server.log'
