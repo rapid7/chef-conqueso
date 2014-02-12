@@ -25,7 +25,7 @@ Attributes
 * `['conqueso']['db']['user']` - The db user the conqueso server should connect as.
 * `['conqueso']['db']['password']` - The password for the user you're connecting as.
 * `['conqueso']['db']['maxConnections']` - The max connections sequelize should use.
-* `['conqueso']['db']['maxIdleTime']` - The max idle time sequelize should use per connection.
+* `['conqueso']['db']['maxIdleTime']` - The max idle time sequelize should use per connection.  *PLEASE NOTE* - This setting is in _MILISECONDS_.
 * `['conqueso']['pollintervalsecs']` - The polling interval it should use.
 * `['conqueso']['logging']['dir']` - The directory that will contain the conqueso log file.
 * `['conqueso']['logging']['file']` - The log file name it should use.
