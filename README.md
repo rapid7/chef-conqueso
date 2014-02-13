@@ -1,5 +1,6 @@
 conqueso-chef
 =============
+[![Dependency Status](https://gemnasium.com/rapid7/conqueso-chef.png)](https://gemnasium.com/rapid7/conqueso-chef)
 
 The chef cookbook for deploying conqueso.
 
