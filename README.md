@@ -50,3 +50,13 @@ Once you have that up and running, the next thing you'll need is [Berkshelf](htt
 Besure to follow the *vagrant-berkshelf* section on that page.
 
 Once you have all that set up, `git clone` this repo then you should be able to `vagrant up` within that directory and you'll have a running copy of the [Conqueso](https://github.com/rapid7/conqueso) service.
+
+To actually use the cookbook, you should just need to to use the wrapper type pattern by just using an import and overriding any attributes you need to change from the base cookbook.
+
+#### Example
+``` ruby
+#in your recipe you can define these:
+include_recipe "conqueso-chef"
+node.set["conqueso"]["db"]["host"] = "your db host here"
+node.set["conqueso"]["db"]["user"] = "your db user name here"
+node.set["conqueso"]["db"]["password"] = "your db password here"
