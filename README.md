@@ -35,7 +35,10 @@ Attributes
 * `['conqueso']['install']['mysqlclient']` - Should we install the mysql client.
 * `['conqueso']['start']` - Post installation, should conqueso be started.
 
-
+Requirements
+------------
+* Chef 10 or higher
+* Ruby 1.9 (preferably from the Chef full-stack installer)
 
 Getting Started
 -----------
