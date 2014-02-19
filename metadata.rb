@@ -4,7 +4,7 @@ maintainer_email 'eciramella@rapid7.com'
 license          'Apache License'
 description      'Installs/Configures the conqueso server'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version          '0.5.1'
+version          '0.5.2'
 
 depends 'mysql', '4.0.20'
 depends 'apt', '2.3.4'
