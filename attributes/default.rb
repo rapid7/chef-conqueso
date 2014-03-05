@@ -1,7 +1,7 @@
 default['conqueso']['version'] = '0.3.5'
 #Choose one or the other here....
-#default['conqueso']['install']['fromsource'] = true
-default['conqueso']['install']['frompackage'] = true
+default['conqueso']['install']['fromsource'] = true
+#default['conqueso']['install']['frompackage'] = true
 default['conqueso']['http']['port'] = 8080
 default['conqueso']['db']['type'] = 'MYSQL'
 default['conqueso']['db']['host'] = 'localhost'
@@ -20,3 +20,4 @@ default['conqueso']['logging']['level'] = 'info'
 default['conqueso']['install']['mysqlserver'] = true
 default['conqueso']['install']['mysqlclient'] = true
 default['conqueso']['start'] = true
+default['conqueso']['foreverversion'] = '0.10.11'

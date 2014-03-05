@@ -36,6 +36,10 @@ end
 include_recipe "conqueso-chef::install_nodejs"
 include_recipe "conqueso-chef::install_mysql"
 
+execute "install forever" do
+  command "npm install -g forever@#{node['conqueso']['foreverversion']}"
+end
+
 if node['conqueso']['install']['fromsource'] && node['conqueso']['install']['frompackage']
    Chef::Log.fatal("You've chosen two sources for installation - please choose one or the other.")
    Chef::Log.fatal("Skipping the rest of the install at this point....")

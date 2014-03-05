@@ -14,9 +14,8 @@ git "/srv/conqueso-latest" do
   reference "master"
 end
 
-execute "install grunt and bower" do
+execute "install grunt, bower" do
   command "npm install -g grunt-cli bower"
-  cwd "/srv/#{artifactdir}"
 end
 
 execute "install dependencies" do
