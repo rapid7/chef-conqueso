@@ -1,4 +1,4 @@
-site :opscode
+source "https://api.berkshelf.com"
 
 cookbook 'mysql', '4.0.20'
 cookbook 'apt', '2.3.4'
