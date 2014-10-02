@@ -1,4 +1,4 @@
-source "https://api.berkshelf.com"
+source "https://supermarket.getchef.com"
 
 cookbook 'mysql', '4.0.20'
 cookbook 'apt', '2.3.4'
