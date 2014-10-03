@@ -1,4 +1,4 @@
-default['conqueso']['version'] = '0.4.0'
+default['conqueso']['version'] = '0.4.1'
 #Choose one or the other here....
 #default['conqueso']['install']['fromsource'] = true
 default['conqueso']['install']['frompackage'] = true
