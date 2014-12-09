@@ -8,6 +8,5 @@
 #
 
 ## For Services
-# node.baking
 # include_recipe 'rapid7-baker::default'
 include_recipe 'rapid7-cookbook::default'
