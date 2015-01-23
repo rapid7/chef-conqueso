@@ -11,7 +11,7 @@
   },
   "builders": [{
     "type": "amazon-chroot",
-    "ami_name": "{{user `SERVICE_NAME`}}-{{user `VERSION`}}-{{user `BUILD_DATE`}}",
+    "ami_name": "{{user `SERVICE_NAME`}}-{{user `VERSION`}}-{{user `BUILD_NUMBER`}}",
     "source_ami": "{{user `BASEAMI`}}",
     "ami_virtualization_type": "paravirtual",
     "ami_description": "{{user `SERVICE_DESCRIPTION`}}",
