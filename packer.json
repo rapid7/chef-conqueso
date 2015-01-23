@@ -5,6 +5,7 @@
     "SERVICE_NAME": "cookbook",
     "SERVICE_DESCRIPTION": "Rapid7 Cookbook",
     "VERSION": "",
+    "BUILD_NUMBER": "",
     "BUILD_DATE": "",
     "BUILD_URL": ""
   },
@@ -12,10 +13,11 @@
     "type": "amazon-chroot",
     "ami_name": "{{user `SERVICE_NAME`}}-{{user `VERSION`}}-{{user `BUILD_DATE`}}",
     "source_ami": "{{user `BASEAMI`}}",
+    "ami_virtualization_type": "paravirtual",
     "ami_description": "{{user `SERVICE_DESCRIPTION`}}",
     "tags": {
       "service": "{{user `SERVICE_NAME`}}",
-      "version": "{{user `VERSION`}}",
+      "version": "{{user `VERSION`}}-{{user `BUILD_NUMBER`}}",
       "build_date": "{{user `BUILD_DATE`}}",
       "build_url": "{{user `BUILD_URL`}}"
     }
