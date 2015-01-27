@@ -1,6 +1,5 @@
 {
   "variables": {
-    "BASEAMI": "",
     "BASEAMI_HVM": "",
     "SERVICE_NAME": "cookbook",
     "SERVICE_DESCRIPTION": "Rapid7 Cookbook",
@@ -12,8 +11,8 @@
   "builders": [{
     "type": "amazon-chroot",
     "ami_name": "{{user `SERVICE_NAME`}}-{{user `VERSION`}}-{{user `BUILD_NUMBER`}}",
-    "source_ami": "{{user `BASEAMI`}}",
-    "ami_virtualization_type": "paravirtual",
+    "source_ami": "{{user `BASEAMI_HVM`}}",
+    "ami_virtualization_type": "hvm",
     "ami_description": "{{user `SERVICE_DESCRIPTION`}}",
     "tags": {
       "service": "{{user `SERVICE_NAME`}}",
