@@ -4,7 +4,6 @@
 \#*#
 .*.sw[a-z]
 *.un~
-<<<<<<< HEAD
 /cookbooks
 
 # Bundler
@@ -14,7 +13,6 @@ bin/*
 
 .kitchen/
 .kitchen.local.yml
-=======
 pkg/
 
 # Berkshelf
