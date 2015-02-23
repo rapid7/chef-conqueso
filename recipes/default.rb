@@ -16,7 +16,7 @@ Chef::Log.info("|____________________|")
 version = node['conqueso']['version']
 artifactdir = "conqueso-#{version}"
 artifactname = "conqueso-server-#{node['conqueso']['version']}.zip"
-artifactdldir = "#{Chef::Config['file_cache_path']}/" 
+artifactdldir = "#{Chef::Config['file_cache_path']}/"
 artifactdlfile = artifactdldir + artifactname
 baseurl = "https://github.com/rapid7/conqueso/releases/download/"
 url = baseurl+"#{node['conqueso']['version']}/"+artifactname

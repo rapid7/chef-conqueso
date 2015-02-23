@@ -2,6 +2,16 @@
 # or sharing to the community site.
 # Lines that start with '# ' are comments.
 
+# Build Files #
+###############
+.bundle/*
+vendor
+vendor/**
+rvm.env
+Gemfile.lock
+woodhouse.pem
+woodhouse.rb
+
 # OS generated files #
 ######################
 .DS_Store
@@ -69,9 +79,8 @@ Procfile
 
 # Berkshelf #
 #############
-Berksfile
 Berksfile.lock
-cookbooks/*
+cookbooks
 tmp
 
 # Cookbooks #
