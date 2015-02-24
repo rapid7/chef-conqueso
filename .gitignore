@@ -1,5 +1,3 @@
-.vagrant
-Berksfile.lock
 *~
 *#
 .#*
@@ -15,3 +13,19 @@ bin/*
 
 .kitchen/
 .kitchen.local.yml
+pkg/
+
+# Berkshelf
+.vagrant
+/cookbooks
+cookbooks.tar.gz
+Berksfile.lock
+
+# Bundler
+bin/*
+.bundle/*
+
+VERSION
+credentials.json
+metadata.json
+vendor
