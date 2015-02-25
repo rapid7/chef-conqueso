@@ -18,7 +18,10 @@
 #
 package 'unzip'
 
+node.default['conqueso']['package_name'] = "conqueso-server-#{ node['conqueso']['version'] }.zip"
 node.default['conqueso']['install_dir'] = "/srv/conqueso-#{ node['conqueso']['version'] }"
+node.default['conqueso']['package_url'] = 'https://github.com/rapid7/conqueso/'\
+  "releases/download/#{ node['conqueso']['version'] }/#{ node['conqueso']['package_name'] }"
 package_artifact = ::File.join(Chef::Config['cache_path'], node['conqueso']['package_name'])
 
 remote_file package_artifact do

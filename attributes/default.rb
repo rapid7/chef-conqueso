@@ -25,12 +25,7 @@ default['nodejs']['packages'] = ['nodejs']
 ## Conqueso Install/Configuration
 default['conqueso']['version'] = '0.4.2'
 default['conqueso']['install_method'] = :package # :package or :source
-
-default['conqueso']['package_name'] = "conqueso-server-#{ node['conqueso']['version'] }.zip"
 default['conqueso']['package_shasum'] = '82406dc9ddd368da45cc02772cd945c37603912aaa74d4b7364ee2cfe5bef745'
-
-default['conqueso']['package_url'] = 'https://github.com/rapid7/conqueso/'\
-  "releases/download/#{ node['conqueso']['version'] }/#{ node['conqueso']['package_name'] }"
 default['conqueso']['git_url'] = 'https://github.com/rapid7/conqueso.git'
 default['conqueso']['git_ref'] = 'master'
 
