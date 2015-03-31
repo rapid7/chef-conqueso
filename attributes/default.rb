@@ -19,9 +19,7 @@
 
 ## NodeJS Install
 include_attribute 'nodejs::default'
-include_attribute 'nodejs::packages'
 default['nodejs']['install_repo'] = false
-default['nodejs']['packages'] = ['nodejs']
 
 ## Conqueso Install/Configuration
 default['conqueso']['version'] = '0.4.2'

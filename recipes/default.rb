@@ -35,7 +35,7 @@ apt_repository 'nodejs' do
   distribution node['lsb']['codename']
 end
 
-include_recipe 'nodejs::nodejs'
+package 'nodejs'
 include_recipe "#{ cookbook_name }::_install_mysql"
 
 ## Set up Operator user/group
