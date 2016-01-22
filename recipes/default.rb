@@ -53,8 +53,6 @@ directory node['conqueso']['home_dir'] do
   recursive true
 end
 
-include_recipe "#{ cookbook_name }::_logging"
-
 ## Select installation method
 Chef::Log.info("Installing conqueso from #{ node['conqueso']['install_method'] }")
 case node['conqueso']['install_method'].to_s
@@ -99,6 +97,9 @@ cookbook_file '/etc/init.d/conqueso' do
   source 'conqueso-init.sh'
   mode '0755'
 end
+
+# Configure log rotation
+include_recipe "#{ cookbook_name }::_logging"
 
 service 'conqueso' do
   supports :status => true, :restart => true

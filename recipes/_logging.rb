@@ -18,7 +18,7 @@
 #
 logrotate_app 'conqueso' do
   cookbook 'logrotate'
-  path "#{node['conqueso']['install_dir']}/logs"
+  path "#{node['conqueso']['logging']['dir']}/#{node['conqueso']['logging']['file']}"
   enable true
   frequency 'daily'
   options %w(missingok notifempty compress copytruncate)
