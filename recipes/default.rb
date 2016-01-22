@@ -53,6 +53,8 @@ directory node['conqueso']['home_dir'] do
   recursive true
 end
 
+include_recipe "#{ cookbook_name }::_logging"
+
 ## Select installation method
 Chef::Log.info("Installing conqueso from #{ node['conqueso']['install_method'] }")
 case node['conqueso']['install_method'].to_s
