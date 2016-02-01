@@ -98,6 +98,9 @@ cookbook_file '/etc/init.d/conqueso' do
   mode '0755'
 end
 
+# Configure log rotation
+include_recipe "#{ cookbook_name }::_logging"
+
 service 'conqueso' do
   supports :status => true, :restart => true
   action [:enable]

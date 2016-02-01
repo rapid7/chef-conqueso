@@ -22,9 +22,9 @@ include_attribute 'nodejs::default'
 default['nodejs']['install_repo'] = false
 
 ## Conqueso Install/Configuration
-default['conqueso']['version'] = '0.4.2'
+default['conqueso']['version'] = '0.5.0'
 default['conqueso']['install_method'] = :package # :package or :source
-default['conqueso']['package_shasum'] = '82406dc9ddd368da45cc02772cd945c37603912aaa74d4b7364ee2cfe5bef745'
+default['conqueso']['package_shasum'] = '628be1c0b9eb3f710769cf9f39bd449afc987843e81335914508e08fbb0d7b38'
 default['conqueso']['git_url'] = 'https://github.com/rapid7/conqueso.git'
 default['conqueso']['git_ref'] = 'master'
 

@@ -6,7 +6,7 @@
 # Default-Start: 2 3 4 5
 # Default-Stop: 0 1 6
 # Short-Description: The conqueso server
-# Description: The conqueso server 
+# Description: The conqueso server
 ### END INIT INFO
 
 # Author: EJ Ciramella
@@ -20,9 +20,6 @@ APPLICATION_DIRECTORY=/srv/conqueso
 APPLICATION_START=server/app.js
 PIDFILE=$APPLICATION_DIRECTORY/.forever/$NAME.pid
 export HOME=$APPLICATION_DIRECTORY
-
-DATE_FORMAT=`date +%Y-%m-%d -d "today"`
-LOGFILE=$APPLICATION_DIRECTORY/logs/server.log.$DATE_FORMAT
 
 PATH=$NODE_BIN_DIR:$PATH
 export NODE_ENV=production
@@ -38,7 +35,7 @@ start() {
                 echo "Starting $NAME"
                 cd $APPLICATION_DIRECTORY
                 exec sudo -u conqueso forever --pidFile $PIDFILE --sourceDir $APPLICATION_DIRECTORY \
-                    -a -l $LOGFILE --minUptime 3000 --spinSleepTime 5000 \
+                    --minUptime 3000 --spinSleepTime 5000 \
                     start $APPLICATION_START
                 RETVAL=$?
    fi
